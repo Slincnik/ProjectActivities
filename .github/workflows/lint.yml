@@ -1,5 +1,8 @@
-name: Lint
-on: [push, pull_request]
+name: Linton:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   lint:
