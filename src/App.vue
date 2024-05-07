@@ -11,10 +11,10 @@ router.isReady().finally(() => (isRouterReady.value = true))
 </script>
 
 <template>
-  <AppLayout>
-    <div v-if="!isRouterReady" class="flex justify-center items-center h-full">
-      <Spinner size="36" />
-    </div>
-    <router-view v-else />
+  <div v-if="!isRouterReady" class="flex justify-center items-center h-dvh">
+    <Spinner size="36" />
+  </div>
+  <AppLayout v-else>
+    <router-view />
   </AppLayout>
 </template>
