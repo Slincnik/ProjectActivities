@@ -15,6 +15,14 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
     meta: {
       layout: AppLayoutsEnum.auth
     }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: RouteNames.NOT_FOUND,
+    redirect: () => {
+      alert('Page not found')
+      return { name: RouteNames.HOME }
+    }
   }
 ]
 

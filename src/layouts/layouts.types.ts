@@ -14,5 +14,6 @@ export enum RouteNames {
   REGISTER = 'Register',
   PROFILE = 'Profile',
   EVENTS = 'Events',
-  TRACKED = 'Tracked'
+  TRACKED = 'Tracked',
+  NOT_FOUND = 'NotFound'
 }
