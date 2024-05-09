@@ -17,6 +17,14 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
     }
   },
   {
+    path: '/register',
+    name: RouteNames.REGISTER,
+    component: () => import('@/pages/Auth/RegisterPage.vue'),
+    meta: {
+      layout: AppLayoutsEnum.auth
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: RouteNames.NOT_FOUND,
     redirect: () => {
