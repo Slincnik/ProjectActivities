@@ -14,6 +14,7 @@
                 v-model="DTO.email"
                 id="name"
                 placeholder="test@test.ru"
+                type="email"
               />
             </div>
             <div class="flex flex-col space-y-1.5">
@@ -24,13 +25,14 @@
                 id="password"
                 type="password"
                 placeholder="Password"
+                @keyup.enter="mutate"
               />
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter class="flex justify-end px-6 pb-6">
-        <Button :disabled="isPending" @click="mutate">Войти</Button>
+        <Button :disabled="isPending" @keyup.enter="mutate" @click="mutate">Войти</Button>
       </CardFooter>
     </Card>
   </div>
