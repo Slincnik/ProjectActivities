@@ -10,7 +10,7 @@ export const AppLayoutToFileMap: Record<AppLayoutsEnum, string> = {
   authed: 'AppLayoutAuthed.vue'
 }
 
-export enum RouteNames {
+export enum RouterNames {
   HOME = 'Home',
   LOGIN = 'Login',
   REGISTER = 'Register',
@@ -18,4 +18,10 @@ export enum RouteNames {
   EVENTS = 'Events',
   TRACKED = 'Tracked',
   NOT_FOUND = 'NotFound'
+}
+
+export enum RouteNames {
+  PROFILE = 'Профиль',
+  EVENTS = 'Мероприятия',
+  TRACKED = 'Отслеживаемое'
 }

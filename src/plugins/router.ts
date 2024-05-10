@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { loadLayoutMiddleware } from './middleware/loadLayout.middleware'
-import { AppLayoutsEnum, RouteNames } from '@/layouts/layouts.types'
+import { AppLayoutsEnum, RouterNames } from '@/layouts/layouts.types'
 import { loadUserMiddleware } from './middleware/loadUser.middleware'
 
 const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/',
-    name: RouteNames.HOME,
+    name: RouterNames.HOME,
     component: () => import('@/pages/HomeView.vue'),
     meta: {
       guest: true
@@ -14,7 +14,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    name: RouteNames.LOGIN,
+    name: RouterNames.LOGIN,
     component: () => import('@/pages/Auth/LoginPage.vue'),
     meta: {
       guest: true,
@@ -23,7 +23,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   },
   {
     path: '/register',
-    name: RouteNames.REGISTER,
+    name: RouterNames.REGISTER,
     component: () => import('@/pages/Auth/RegisterPage.vue'),
     meta: {
       guest: true,
@@ -32,13 +32,37 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   },
   {
     path: '/:pathMatch(.*)*',
-    name: RouteNames.NOT_FOUND,
+    name: RouterNames.NOT_FOUND,
     meta: {
       guest: true
     },
     redirect: () => {
       alert('Page not found')
-      return { name: RouteNames.HOME }
+      return { name: RouterNames.HOME }
+    }
+  },
+  {
+    path: '/events',
+    name: RouterNames.EVENTS,
+    component: () => import('@/pages/EventsView.vue'),
+    meta: {
+      layout: AppLayoutsEnum.authed
+    }
+  },
+  {
+    path: '/profile',
+    name: RouterNames.PROFILE,
+    component: () => import('@/pages/EventsView.vue'),
+    meta: {
+      layout: AppLayoutsEnum.authed
+    }
+  },
+  {
+    path: '/tracked',
+    name: RouterNames.TRACKED,
+    component: () => import('@/pages/EventsView.vue'),
+    meta: {
+      layout: AppLayoutsEnum.authed
     }
   }
 ]

@@ -2,7 +2,7 @@ import { api } from '@/plugins/axios'
 import { useMutation } from '@tanstack/vue-query'
 import { defineStore } from 'pinia'
 import router from '@/plugins/router'
-import { RouteNames } from '@/layouts/layouts.types'
+import { RouterNames } from '@/layouts/layouts.types'
 
 export type User = {
   id: number
@@ -29,7 +29,7 @@ export const useLogin = (DTO: LoginDTO) =>
 
       if (user) {
         authStore.setUser(user)
-        router.push({ name: RouteNames.EVENTS })
+        router.push({ name: RouterNames.EVENTS })
       }
     }
   })
