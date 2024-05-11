@@ -44,7 +44,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/events',
     name: RouterNames.EVENTS,
-    component: () => import('@/pages/EventsView.vue'),
+    component: () => import('@/pages/Events/EventsView.vue'),
     meta: {
       layout: AppLayoutsEnum.authed
     }
@@ -52,7 +52,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/profile',
     name: RouterNames.PROFILE,
-    component: () => import('@/pages/EventsView.vue'),
+    component: () => import('@/pages/Events/EventsView.vue'),
     meta: {
       layout: AppLayoutsEnum.authed
     }
@@ -60,7 +60,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/tracked',
     name: RouterNames.TRACKED,
-    component: () => import('@/pages/EventsView.vue'),
+    component: () => import('@/pages/Events/EventsView.vue'),
     meta: {
       layout: AppLayoutsEnum.authed
     }
