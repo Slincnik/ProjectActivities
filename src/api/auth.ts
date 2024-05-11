@@ -23,13 +23,13 @@ export const useLogin = (DTO: LoginDTO) =>
 
       return call.data
     },
-    onSuccess: (data: User[]) => {
+    onSuccess: async (data: User[]) => {
       const authStore = useAuthStore()
       const user = data.find((us) => us.email === DTO.email && us.password === DTO.password)
 
       if (user) {
         authStore.setUser(user)
-        router.push({ name: RouterNames.EVENTS })
+        await router.push({ name: RouterNames.EVENTS })
       }
     }
   })
@@ -46,4 +46,3 @@ export const useAuthStore = defineStore('auth', {
     }
   }
 })
-
