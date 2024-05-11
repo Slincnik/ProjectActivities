@@ -17,7 +17,8 @@ export enum RouterNames {
   PROFILE = 'Profile',
   EVENTS = 'Events',
   TRACKED = 'Tracked',
-  NOT_FOUND = 'NotFound'
+  NOT_FOUND = 'NotFound',
+  EVENT_CREATE = 'CreateEvent'
 }
 
 export enum RouteNames {

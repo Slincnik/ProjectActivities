@@ -50,6 +50,14 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
     }
   },
   {
+    path: '/events/create',
+    name: RouterNames.EVENT_CREATE,
+    component: () => import('@/pages/Events/EventCreateView.vue'),
+    meta: {
+      layout: AppLayoutsEnum.authed
+    }
+  },
+  {
     path: '/profile',
     name: RouterNames.PROFILE,
     component: () => import('@/pages/Events/EventsView.vue'),

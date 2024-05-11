@@ -7,7 +7,9 @@
         placeholder="Найти мероприятие"
       />
       <Button class="ml-2 rounded-md">Поиск</Button>
-      <Button class="ml-2 rounded-md">Создать</Button>
+      <Button @click="$router.push({ path: '/events/create' })" class="ml-2 rounded-md"
+        >Создать</Button
+      >
     </div>
     <div
       class="grid grid-cols-3 justify-items-center xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-sm:grid-cols-1 gap-x-10 gap-y-4 mt-20"
