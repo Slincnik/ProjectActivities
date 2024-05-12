@@ -14,7 +14,7 @@
           <Button class="mt-2 w-[150px]">Загрузить фото</Button>
         </div>
         <div class="flex lg:mt-2 md:mt-2 sm:mt-2 max-sm:mt-2">
-          <Card class="w-[410px]">
+          <Card class="max-sm:w-[300px] w-[410px]">
             <CardHeader>
               <CardTitle>Название события</CardTitle>
               <CardDescription>Заполните данные</CardDescription>
