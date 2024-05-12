@@ -37,7 +37,12 @@ export const useLogin = (DTO: LoginDTO) =>
 export const useAuthStore = defineStore('auth', {
   state: () => {
     return {
-      user: null
+      user: null as User | null
+    }
+  },
+  getters: {
+    getUser(state) {
+      return state.user
     }
   },
   actions: {

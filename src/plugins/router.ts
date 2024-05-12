@@ -60,7 +60,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/profile',
     name: RouterNames.PROFILE,
-    component: () => import('@/pages/Events/EventsView.vue'),
+    component: () => import('@/pages/ProfileView.vue'),
     meta: {
       layout: AppLayoutsEnum.authed
     }
