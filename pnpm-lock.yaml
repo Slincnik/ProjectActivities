@@ -8,6 +8,9 @@ dependencies:
   '@tanstack/vue-query':
     specifier: ^5.32.0
     version: 5.32.0(vue@3.4.25)
+  '@vee-validate/zod':
+    specifier: ^4.12.8
+    version: 4.12.8(vue@3.4.25)
   '@vuepic/vue-datepicker':
     specifier: ^8.5.1
     version: 8.5.1(vue@3.4.25)
@@ -41,12 +44,18 @@ dependencies:
   v-calendar:
     specifier: ^3.1.2
     version: 3.1.2(@popperjs/core@2.11.8)(vue@3.4.25)
+  vee-validate:
+    specifier: ^4.12.8
+    version: 4.12.8(vue@3.4.25)
   vue:
     specifier: ^3.4.21
     version: 3.4.25(typescript@5.4.5)
   vue-router:
     specifier: ^4.3.0
     version: 4.3.2(vue@3.4.25)
+  zod:
+    specifier: ^3.23.8
+    version: 3.23.8
 
 devDependencies:
   '@rushstack/eslint-patch':
@@ -1195,6 +1204,16 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
+
+  /@vee-validate/zod@4.12.8(vue@3.4.25):
+    resolution: {integrity: sha512-P+G8grCc5iN7FMfvLzVWoGKxamBd0EYgN/hXBmzgbJV7B7FGnQADlUIsqt4jM+oGacbFW12B56zSORaVy3Owqg==}
+    dependencies:
+      type-fest: 4.18.2
+      vee-validate: 4.12.8(vue@3.4.25)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - vue
+    dev: false
 
   /@vitejs/plugin-vue@5.0.4(vite@5.2.10)(vue@3.4.25):
     resolution: {integrity: sha512-WS3hevEszI6CEVEx28F8RjTX97k3KsrcY6kvTg7+Whm5y3oYvcqzVeGCU3hxSAn4uY2CLCkeokkGKpoctccilQ==}
@@ -3229,6 +3248,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /type-fest@4.18.2:
+    resolution: {integrity: sha512-+suCYpfJLAe4OXS6+PPXjW3urOS4IoP9waSiLuXfLgqZODKw/aWwASvzqE886wA0kQgGy0mIWyhd87VpqIy6Xg==}
+    engines: {node: '>=16'}
+    dev: false
+
   /typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
@@ -3277,6 +3301,16 @@ packages:
       lodash: 4.17.21
       vue: 3.4.25(typescript@5.4.5)
       vue-screen-utils: 1.0.0-beta.13(vue@3.4.25)
+    dev: false
+
+  /vee-validate@4.12.8(vue@3.4.25):
+    resolution: {integrity: sha512-A07rm3+y7SRk0CMD/O4nBT0nxtwjyfzGZwjEUDk18SxK0ZMzd4AFCzzdHlIiCE1QgHetxd0I3kVkZdN0GG0Oww==}
+    peerDependencies:
+      vue: ^3.4.26
+    dependencies:
+      '@vue/devtools-api': 6.6.1
+      type-fest: 4.18.2
+      vue: 3.4.25(typescript@5.4.5)
     dev: false
 
   /vite-hot-client@0.2.3(vite@5.2.10):
@@ -3521,3 +3555,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
