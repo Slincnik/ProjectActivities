@@ -5,46 +5,87 @@
         <CardTitle> Войти в аккаунт</CardTitle>
       </CardHeader>
       <CardContent>
-        <form>
+        <form @submit="onSubmit" class="flex flex-col">
           <div class="grid items-center w-full gap-4">
-            <div class="flex flex-col space-y-1.5">
-              <Label for="name">Email</Label>
-              <Input
-                :disabled="isPending"
-                v-model="DTO.email"
-                id="name"
-                placeholder="test@test.ru"
-                type="email"
-              />
-            </div>
-            <div class="flex flex-col space-y-1.5">
-              <Label for="password">Пароль</Label>
-              <Input
-                :disabled="isPending"
-                v-model="DTO.password"
-                id="password"
-                type="password"
-                placeholder="Password"
-                @keyup.enter="mutate"
-              />
-            </div>
+            <FormField v-slot="{ componentField }" name="email">
+              <FormItem>
+                <div class="flex flex-col space-y-1.5">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      :disabled="isPending"
+                      v-model="DTO.email"
+                      type="email"
+                      placeholder="test@test.ru"
+                      v-bind="componentField"
+                    />
+                  </FormControl>
+                </div>
+                <FormMessage />
+              </FormItem>
+            </FormField>
+            <FormField v-slot="{ componentField }" name="password">
+              <FormItem>
+                <div class="flex flex-col space-y-1.5">
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      :disabled="isPending"
+                      v-model="DTO.password"
+                      type="password"
+                      placeholder="Password"
+                      v-bind="componentField"
+                    />
+                  </FormControl>
+                </div>
+                <FormMessage />
+              </FormItem>
+            </FormField>
+            <Button type="submit" class="justify-self-end">Войти</Button>
           </div>
         </form>
       </CardContent>
-      <CardFooter class="flex justify-end px-6 pb-6">
-        <Button :disabled="isPending" @keyup.enter="mutate" @click="mutate">Войти</Button>
-      </CardFooter>
     </Card>
   </div>
 </template>
 
 <script setup lang="ts">
 import { shallowReactive } from 'vue'
+import { useForm } from 'vee-validate'
+import { z } from 'zod'
+import { toTypedSchema } from '@vee-validate/zod'
+
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+
 import { useLogin } from '@/api/auth'
+
+const formSchema = toTypedSchema(
+  z.object({
+    email: z
+      .string({
+        required_error: 'Введите почту'
+      })
+      .email({
+        message: 'Проверьте корректность почты'
+      }),
+    password: z
+      .string({
+        required_error: 'Введите пароль'
+      })
+      .min(6, {
+        message: 'Пароль должен содержать не менее 6 символов.'
+      })
+  })
+)
+
+const { handleSubmit } = useForm({
+  validationSchema: formSchema
+})
+
+const onSubmit = handleSubmit(() => mutate())
 
 const DTO = shallowReactive({
   email: '',
@@ -53,4 +94,3 @@ const DTO = shallowReactive({
 
 const { isPending, mutate } = useLogin(DTO)
 </script>
-
