@@ -68,7 +68,7 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/tracked',
     name: RouterNames.TRACKED,
-    component: () => import('@/pages/Events/EventsView.vue'),
+    component: () => import('@/pages/Events/TrackedView.vue'),
     meta: {
       layout: AppLayoutsEnum.authed
     }
