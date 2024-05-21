@@ -37,7 +37,9 @@
       </div>
       <div class="mt-2">
         <Button class="w-full">{{ buttonLabel }}</Button>
-        <Button v-if="showEditButton" class="mt-2 w-full"> Редактировать </Button>
+        <Button v-if="showEditButton" @click="emit('editClick', event.id)" class="mt-2 w-full">
+          Редактировать
+        </Button>
       </div>
     </div>
     <div
@@ -70,6 +72,7 @@ interface Props {
 
 const emit = defineEmits<{
   btnClick: [type: 'tracked' | 'myEvents']
+  editClick: [id: number]
 }>()
 
 const props = defineProps<Props>()

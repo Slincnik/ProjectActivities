@@ -38,6 +38,7 @@
           @btnClick="openModal"
           showEditButton
           type="myEvents"
+          @editClick="(id) => openEditModal(id)"
         />
       </div>
     </div>
@@ -48,23 +49,73 @@
       </template>
       <template #action>{{ modalContent.action }}</template>
     </AlertDialog>
+    <Dialog :open="store.showModal" @update:open="onEditModal">
+      <DialogScrollContent>
+        <DialogHeader>
+          <DialogTitle>Edit profile</DialogTitle>
+        </DialogHeader>
+        <EventWork
+          class="grid grid-cols-1 justify-items-center"
+          title="Редактирование мероприятия"
+          description="Заполните данные"
+          v-model="clonedDTO"
+        />
+        <DialogFooter>
+          <Button type="submit"> Изменить данные </Button>
+        </DialogFooter>
+      </DialogScrollContent>
+    </Dialog>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+import { useCloned } from '@vueuse/core'
 import { getMyCards, getTrackedCards } from '@/api/events'
 import { AlertDialog } from '@/components/AlertDialog'
 import { TrackedCard } from '@/components/TrackedCard'
 import { SkeletonCard } from '@/components/EventCard'
-import { computed, ref, watch } from 'vue'
+import EventWork from '@/components/EventWork/EventWork.vue'
+import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogTitle,
+  DialogScrollContent,
+  DialogHeader,
+  DialogFooter
+} from '@/components/ui/dialog'
+import { useModalStore } from '@/composables/useEditCardModal'
 
 const isModalOpen = defineModel<boolean>({ default: false })
 const selectedType = ref<'tracked' | 'myEvents' | null>(null)
+const store = useModalStore()
 
 const openModal = (type: 'tracked' | 'myEvents') => {
   isModalOpen.value = true
   selectedType.value = type
 }
+
+const openEditModal = (id: number) => {
+  store.setParams({ id })
+  store.toggleModal()
+}
+
+const onEditModal = () => {
+  store.toggleModal()
+  sync()
+}
+
+const DTO = ref({
+  name: '',
+  game: '',
+  place: '',
+  address: '',
+  howToGet: '',
+  peopleCount: [5],
+  dateTime: ''
+})
+
+const { sync, cloned: clonedDTO } = useCloned(DTO, { manual: true })
 
 const modalContent = computed(() => {
   if (selectedType.value === 'tracked') {
@@ -90,6 +141,7 @@ const modalContent = computed(() => {
 watch(isModalOpen, (newVal) => {
   if (!newVal) selectedType.value = null
 })
+
 const { data: selfCards, isLoading: isLoadingSelfCards } = getMyCards()
 
 const { data: trackedCards, isLoading: isLoadingTrackedCards } = getTrackedCards()
