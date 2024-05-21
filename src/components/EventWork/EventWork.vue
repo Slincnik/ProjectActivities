@@ -17,7 +17,7 @@
         <CardContent>
           <div class="flex flex-col space-y-1.5">
             <Label for="name">Название</Label>
-            <Input required model="DTO.name" id="name" placeholder="Название" />
+            <Input required v-model="DTO.name" id="name" placeholder="Название" />
           </div>
           <div class="flex flex-col mt-2 space-y-1.5">
             <Label for="game">Игра</Label>
