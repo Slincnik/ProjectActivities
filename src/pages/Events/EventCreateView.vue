@@ -8,6 +8,7 @@
           v-model="DTO"
           title="Создание мероприятия"
           description="Заполните данные"
+          button-label="Создать"
         />
       </form>
     </div>
