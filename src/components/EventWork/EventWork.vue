@@ -58,7 +58,7 @@
               v-model="DTO.dateTime"
             />
           </div>
-          <Button type="submit" class="mt-2 w-full">{{ buttonLabel }}</Button>
+          <Button v-if="buttonLabel" type="submit" class="mt-2 w-full">{{ buttonLabel }}</Button>
         </CardContent>
       </Card>
     </div>
@@ -72,16 +72,11 @@ import { Button } from '../ui/button'
 import { Slider } from '../ui/slider'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card'
 
-withDefaults(
-  defineProps<{
-    buttonLabel?: string
-    title: string
-    description: string
-  }>(),
-  {
-    buttonLabel: 'Сохранить'
-  }
-)
+defineProps<{
+  buttonLabel?: string
+  title: string
+  description: string
+}>()
 
 const DTO = defineModel<{
   name: string
