@@ -1,30 +1,26 @@
 <template>
   <div
-    class="border dark:border-white mx-auto p-4 rounded-lg w-8/12 flex flex-row max-lg:flex-col max-lg:items-center relative"
+    class="border dark:border-white mx-auto p-4 rounded-lg w-auto flex flex-row max-lg:flex-col max-lg:items-center relative"
   >
     <div class="flex flex-col w-full max-lg:self-center">
       <div>
-        <h3 class="text-2xl">{{ event.title }}</h3>
+        <h3 class="text-2xl">{{ event.name }}</h3>
         <div class="flex gap-2 mt-2">
           <p class="text-gray-500 text-sm">
-            {{
-              Intl.DateTimeFormat('ru', { dateStyle: 'short', timeStyle: 'short' }).format(
-                new Date(event.date)
-              )
-            }}
+            {{ computedTime }}
           </p>
-          <p class="text-gray-500 text-sm">{{ event.location }}</p>
-          <p class="text-gray-500 text-sm">Приняло участие: {{ event.participants }} человек</p>
+          <p class="text-gray-500 text-sm">{{ event.place }}</p>
+          <p class="text-gray-500 text-sm">Приняло участие: {{ event.persons }} человек</p>
         </div>
       </div>
       <img
         :src="event.imageUrl"
-        :alt="event.title"
+        :alt="event.name"
         class="max-w-[390px] max-h-[260px] w-full h-auto object-cover rounded-lg max-lg:self-center max-lg:max-w-screen-sm"
       />
     </div>
     <div
-      class="border-2 p-4 ml-2 rounded-lg dark:border-white flex flex-col justify-between w-full h-[320px] max-w-[410px] max-lg:mt-2 max-lg:ml-0"
+      class="border-2 p-4 ml-2 rounded-lg dark:border-white flex flex-col justify-between w-full h-auto max-w-[410px] max-lg:mt-2 max-lg:ml-0"
     >
       <div
         class="flex flex-col"
@@ -36,8 +32,8 @@
         <h3>{{ event.description }}</h3>
         <h3>Резерв: {{ event.reserve }} человек</h3>
         <h3>{{ event.howToGet }}</h3>
-        <h3>{{ event.address }}</h3>
-        <h3>{{ event.details }}</h3>
+        <h3>{{ event.street }}</h3>
+        <h3>{{ event.description }}</h3>
       </div>
       <div class="mt-2">
         <Button class="w-full">{{ buttonLabel }}</Button>
@@ -60,20 +56,30 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '../ui/button'
+import { computed } from 'vue'
 import { X } from 'lucide-vue-next'
-
-const emit = defineEmits<{
-  btnClick: [type: 'tracked' | 'myEvents']
-}>()
+import type { Card } from '@/api/events'
+import { Button } from '../ui/button'
 
 interface Props {
-  event: any
+  event: Card
   buttonLabel: string
   showEditButton?: boolean
   type: 'tracked' | 'myEvents'
 }
 
-defineProps<Props>()
+const emit = defineEmits<{
+  btnClick: [type: 'tracked' | 'myEvents']
+}>()
+
+const props = defineProps<Props>()
+
+const computedTime = computed(() => {
+  return Intl.DateTimeFormat('ru', {
+    timeStyle: 'short',
+    dateStyle: 'long',
+    timeZone: 'Europe/Moscow'
+  }).format(new Date(props.event.date))
+})
 </script>
 
