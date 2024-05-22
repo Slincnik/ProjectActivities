@@ -40,6 +40,8 @@ import { useDark } from '@vueuse/core'
 
 import ToggleTheme from '@/components/toggleTheme/ToggleTheme.vue'
 import { RouteNames, RouterNames } from './layouts.types'
+import darkLogo from '@/assets/img/logo/darkLogo.svg'
+import whiteLogo from '@/assets/img/logo/logo.svg'
 
 const navbarPages = computed<
   {
@@ -54,8 +56,6 @@ const navbarPages = computed<
 
 const isDark = useDark()
 
-const logoIcon = computed(() =>
-  isDark.value ? '/src/assets/img/logo/darkLogo.svg' : '/src/assets/img/logo/logo.svg'
-)
+const logoIcon = computed(() => (isDark.value ? darkLogo : whiteLogo))
 </script>
 

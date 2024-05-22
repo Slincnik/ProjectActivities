@@ -39,10 +39,10 @@ import { computed } from 'vue'
 import { useDark } from '@vueuse/core'
 import { Button } from '@/components/ui/button'
 import ToggleTheme from '@/components/toggleTheme/ToggleTheme.vue'
+import darkLogo from '@/assets/img/logo/darkLogo.svg'
+import whiteLogo from '@/assets/img/logo/logo.svg'
 
 const isDark = useDark()
 
-const logoIcon = computed(() =>
-  isDark.value ? '/src/assets/img/logo/darkLogo.svg' : '/src/assets/img/logo/logo.svg'
-)
+const logoIcon = computed(() => (isDark.value ? darkLogo : whiteLogo))
 </script>
