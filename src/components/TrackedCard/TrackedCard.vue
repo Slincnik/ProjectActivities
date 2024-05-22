@@ -16,7 +16,7 @@
       <img
         :src="event.imageUrl"
         :alt="event.name"
-        class="max-w-[390px] max-h-[260px] w-full h-auto object-cover rounded-lg max-lg:self-center max-lg:max-w-screen-sm"
+        class="max-w-[390px] max-h-[260px] w-full h-full object-cover rounded-lg max-lg:self-center max-lg:max-w-screen-sm"
       />
     </div>
     <div
