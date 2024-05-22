@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto p-4">
+  <div class="container">
     <div>
       <h2 class="text-3xl mb-4">Отслеживаемые события</h2>
       <div

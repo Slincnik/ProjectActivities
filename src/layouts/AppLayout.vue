@@ -6,8 +6,8 @@
     <component :is="route.meta.layoutComponent">
       <slot />
     </component>
-    <footer>
-      <div class="container border-t mt-4 dark:border-white border-black max-w-[1100px] mx-auto">
+    <footer class="container">
+      <div class="border-t mt-4 dark:border-white border-black">
         <p class="text-center py-[10px] footer_desc">Copyright © 2024</p>
       </div>
     </footer>
