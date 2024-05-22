@@ -1,9 +1,11 @@
 <template>
-  <div class="container px-1 max-sm:px-2 sm:px-2 xl:px-1">
+  <div class="container">
     <p class="text-3xl">Данные профиля</p>
     <template v-if="user">
       <div class="flex flex-row justify-between max-md:items-center max-md:flex-col max-sm">
-        <Card class="w-[300px] mt-4">
+        <Card
+          class="max-w-[400px] xl:max-w-[300px] lg:max-w-[300px] md:max-w-[300px] sm:max-w-[400px] w-full mt-4"
+        >
           <CardHeader>
             <CardTitle>Личная карточка</CardTitle>
           </CardHeader>
