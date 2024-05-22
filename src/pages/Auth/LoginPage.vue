@@ -41,7 +41,7 @@
                 <FormMessage />
               </FormItem>
             </FormField>
-            <Button type="submit" class="justify-self-end">Войти</Button>
+            <Button :disabled="isPending" type="submit" class="justify-self-end">Войти</Button>
           </div>
         </form>
       </CardContent>
