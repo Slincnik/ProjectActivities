@@ -8,7 +8,7 @@
           '!grid-cols-1': isLoadingTrackedCards || trackedCards!.length === 1
         }"
       >
-        <SkeletonCard v-if="isLoadingTrackedCards" />
+        <SkeletonCard v-if="isLoadingTrackedCards || isTrackedError" />
         <TrackedCard
           v-else
           v-for="card in trackedCards"
@@ -28,7 +28,7 @@
           '!grid-cols-1': isLoadingSelfCards || selfCards!.length === 1
         }"
       >
-        <SkeletonCard v-if="isLoadingSelfCards" />
+        <SkeletonCard v-if="isLoadingSelfCards || isSelfError" />
         <TrackedCard
           v-else
           v-for="card in selfCards"
@@ -142,8 +142,12 @@ watch(isModalOpen, (newVal) => {
   if (!newVal) selectedType.value = null
 })
 
-const { data: selfCards, isLoading: isLoadingSelfCards } = getMyCards()
+const { data: selfCards, isLoading: isLoadingSelfCards, isError: isSelfError } = getMyCards()
 
-const { data: trackedCards, isLoading: isLoadingTrackedCards } = getTrackedCards()
+const {
+  data: trackedCards,
+  isLoading: isLoadingTrackedCards,
+  isError: isTrackedError
+} = getTrackedCards()
 </script>
 

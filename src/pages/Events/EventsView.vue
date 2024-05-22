@@ -14,7 +14,7 @@
     <div
       class="grid grid-cols-3 justify-items-center xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 max-sm:grid-cols-1 gap-x-10 gap-y-4 mt-20"
     >
-      <SkeletonCard v-if="isLoading" />
+      <SkeletonCard v-if="isLoading || isError" />
       <EventCard v-else-if="cards?.length" v-for="card in cards" :key="card.id" :card="card" />
     </div>
   </div>
@@ -26,6 +26,6 @@ import { Button } from '@/components/ui/button'
 import { EventCard, SkeletonCard } from '@/components/EventCard'
 import { getCards } from '@/api/events'
 
-const { data: cards, isLoading } = getCards()
+const { data: cards, isLoading, isError } = getCards()
 </script>
 
