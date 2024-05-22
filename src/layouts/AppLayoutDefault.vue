@@ -1,5 +1,48 @@
 <template>
+  <header class="bg-white dark:bg-black pt-5 mb-10">
+    <div class="flex items-center justify-around mx-auto">
+      <div class="flex items-center flex-col">
+        <div class="flex items-center justify-between">
+          <RouterLink to="/" class="pr-1.5 inline-flex items-center gap-2">
+            <img class="h-8 w-auto" :src="logoIcon" alt="Logo" />
+            <span
+              class="max-sm:sr-only xl:text-3xl lg:text-2xl md:text-xl sm:text-xl transition-all ease-linear"
+            >
+              Table Quest
+            </span>
+          </RouterLink>
+          <ToggleTheme />
+        </div>
+        <p
+          class="mt-3 xl:text-xl lg:text-base md:text-base text-center text-balance transition-all ease-linear"
+        >
+          Настольные игры для всех!
+        </p>
+      </div>
+      <div class="flex max-sm:mr-2">
+        <Button as-child class="mr-10">
+          <RouterLink to="/login">Войти</RouterLink>
+        </Button>
+        <Button as-child>
+          <RouterLink to="/register">Регистрация</RouterLink>
+        </Button>
+      </div>
+    </div>
+  </header>
   <main>
     <slot />
   </main>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useDark } from '@vueuse/core'
+import { Button } from '@/components/ui/button'
+import ToggleTheme from '@/components/toggleTheme/ToggleTheme.vue'
+
+const isDark = useDark()
+
+const logoIcon = computed(() =>
+  isDark.value ? '/src/assets/img/logo/darkLogo.svg' : '/src/assets/img/logo/logo.svg'
+)
+</script>

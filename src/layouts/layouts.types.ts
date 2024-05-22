@@ -1,16 +1,28 @@
 export enum AppLayoutsEnum {
-  default = 'default'
+  default = 'default',
+  auth = 'auth',
+  authed = 'authed'
 }
 
 export const AppLayoutToFileMap: Record<AppLayoutsEnum, string> = {
-  default: 'AppLayoutDefault.vue'
+  default: 'AppLayoutDefault.vue',
+  auth: 'AppLayoutAuth.vue',
+  authed: 'AppLayoutAuthed.vue'
 }
 
-export enum RouteNames {
+export enum RouterNames {
   HOME = 'Home',
   LOGIN = 'Login',
   REGISTER = 'Register',
   PROFILE = 'Profile',
   EVENTS = 'Events',
-  TRACKED = 'Tracked'
+  TRACKED = 'Tracked',
+  NOT_FOUND = 'NotFound',
+  EVENT_CREATE = 'CreateEvent'
+}
+
+export enum RouteNames {
+  PROFILE = 'Профиль',
+  EVENTS = 'Мероприятия',
+  TRACKED = 'Отслеживаемое'
 }
