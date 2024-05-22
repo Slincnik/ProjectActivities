@@ -68,6 +68,7 @@
 import { shallowReactive } from 'vue'
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
+import { toast } from 'vue-sonner'
 import { toTypedSchema } from '@vee-validate/zod'
 
 import { Button } from '@/components/ui/button'
@@ -115,8 +116,8 @@ const formSchema = toTypedSchema(
 
 const { handleSubmit } = useForm({ validationSchema: formSchema })
 
-const onSubmit = handleSubmit((values) => {
-  console.log(values)
+const onSubmit = handleSubmit(() => {
+  toast.info('Ваш аккаунт был создан')
 })
 
 const DTO = shallowReactive({

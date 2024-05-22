@@ -17,10 +17,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { toast } from 'vue-sonner'
 import EventWork from '@/components/EventWork/EventWork.vue'
 
 const onSubmit = () => {
-  console.log('SUBMIT')
+  toast.info('Событие создано')
 }
 
 const DTO = ref<{
