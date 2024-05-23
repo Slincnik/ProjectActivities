@@ -1,7 +1,7 @@
 <template>
-  <div class="container flex justify-center">
+  <div class="flex flex-col flex-wrap justify-center items-center">
     <Card class="w-[350px]">
-      <CardHeader>
+      <CardHeader class="items-center">
         <CardTitle> Создать аккаунт</CardTitle>
       </CardHeader>
       <CardContent>
@@ -61,6 +61,7 @@
         </form>
       </CardContent>
     </Card>
+    <FormAdditionalsAuth name="LOGIN" link-text="Войдите" text="Уже зарегистрированы?" />
   </div>
 </template>
 
@@ -74,6 +75,7 @@ import { toTypedSchema } from '@vee-validate/zod'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { FormAdditionalsAuth } from '@/components/AdditionalsAuth'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 
 const formSchema = toTypedSchema(

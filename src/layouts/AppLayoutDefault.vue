@@ -18,12 +18,9 @@
             Настольные игры для всех!
           </p>
         </div>
-        <div class="flex max-sm:mr-2">
-          <Button as-child class="mr-10">
-            <RouterLink to="/login">Войти</RouterLink>
-          </Button>
+        <div>
           <Button as-child>
-            <RouterLink to="/register">Регистрация</RouterLink>
+            <RouterLink to="/login">Войти</RouterLink>
           </Button>
         </div>
       </div>

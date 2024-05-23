@@ -1,7 +1,7 @@
 <template>
-  <div class="container flex justify-center">
+  <div class="container flex flex-col flex-wrap justify-center items-center">
     <Card class="w-[350px]">
-      <CardHeader>
+      <CardHeader class="items-center">
         <CardTitle> Войти в аккаунт</CardTitle>
       </CardHeader>
       <CardContent>
@@ -46,6 +46,7 @@
         </form>
       </CardContent>
     </Card>
+    <FormAdditionalsAuth name="REGISTER" link-text="Зарегистрируйтесь" text="Ещё нет аккаунта?" />
   </div>
 </template>
 
@@ -59,6 +60,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { FormAdditionalsAuth } from '@/components/AdditionalsAuth'
 
 import { useLogin } from '@/api/auth'
 
